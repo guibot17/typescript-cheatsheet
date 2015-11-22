@@ -30,16 +30,14 @@
       </header>
       <section>
         content
-        <pre><code class="typescript">export class Model {
-        constructor (attr? , opts? );
-        get(name: string): any;
-        set(name: string, val: any): void;
-        set(obj: any): void;
-        save(attr? , opts? ): void;
-        destroy(): void;
-        bind(ev: string, f: Function, ctx?: any): void;
-        toJSON(): any;
-    }</code></pre>
+        <pre><code class="typescript">class Person {
+    fullname : string;
+    constructor(public firstname, public middleinitial,
+public lastname) {
+        this.fullname = firstname + " " + middleinitial
+ + " " + lastname;
+    }
+}</code></pre>
       </section>
       <footer>
         <p>This project is maintained by <a href="https://github.com/maklemenz">maklemenz</a></p>
