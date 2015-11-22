@@ -7,6 +7,7 @@
 
     <link rel="stylesheet" href="stylesheets/styles.css">
     <link rel="stylesheet" href="stylesheets/github-light.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/styles/monokai_sublime.min.css">
     <meta name="viewport" content="width=device-width">
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -29,12 +30,25 @@
       </header>
       <section>
         content
+        <pre><code class="typescript">export class Model {
+        constructor (attr? , opts? );
+        get(name: string): any;
+        set(name: string, val: any): void;
+        set(obj: any): void;
+        save(attr? , opts? ): void;
+        destroy(): void;
+        bind(ev: string, f: Function, ctx?: any): void;
+        toJSON(): any;
+    }</code></pre>
       </section>
       <footer>
         <p>This project is maintained by <a href="https://github.com/maklemenz">maklemenz</a></p>
         <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
       </footer>
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/languages/typescript.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
     <script src="javascripts/scale.fix.js"></script>
 <!-- google analytics -->
 <script>
