@@ -5,6 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
     <title>Typescript-cheatsheet by maklemenz</title>
 
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <link rel="stylesheet" href="stylesheets/styles.css">
     <link rel="stylesheet" href="stylesheets/github-light.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/styles/monokai_sublime.min.css">
@@ -12,23 +14,19 @@
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
+
+
+      <!-- TODO: remove -->
+      <meXta http-equiv="refresh" content="3; URL=#">
   </head>
   <body>
     <div class="wrapper">
       <header>
         <h1>Typescript-cheatsheet</h1>
         <p>typescript cheatsheet syntax overview cheat sheet</p>
-
         <p class="view"><a href="https://github.com/maklemenz/typescript-cheatsheet">View the Project on GitHub <small>maklemenz/typescript-cheatsheet</small></a></p>
-
-
-        <ul>
-          <li><a href="https://github.com/maklemenz/typescript-cheatsheet/zipball/master">Download <strong>ZIP File</strong></a></li>
-          <li><a href="https://github.com/maklemenz/typescript-cheatsheet/tarball/master">Download <strong>TAR Ball</strong></a></li>
-          <li><a href="https://github.com/maklemenz/typescript-cheatsheet">View On <strong>GitHub</strong></a></li>
-        </ul>
       </header>
-      <section>
+      <article class="container-fluid">
         <h3> work in progress. come back soon </h3>
 <!--
         <pre><code class="typescript">class Person {
@@ -41,7 +39,70 @@ public lastname) {
 }</code></pre>
 
 -->
-      </section>
+
+          <section class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
+              <h2>Variables</h2>
+              <pre><code class="typescript">var typeInferred = 1; // will be number</code></pre>
+              <pre><code class="typescript">var whatever: any = "can be set to anything";</code></pre>
+              <pre><code class="typescript">var myNumber: number = 1;</code></pre>
+              <pre><code class="typescript">var myString: string = "hello";</code></pre>
+              <pre><code class="typescript">var myBoolean: boolean = true;</code></pre>
+              <pre><code class="typescript">var myNumbers: number[] = [1, 2, 3];</code></pre>
+              <pre><code class="typescript">var myNumbers: Array&lt;number&gt; = [1, 2, 3];</code></pre>
+              <pre><code class="typescript">var myCar: Car = new Car("1970 Dodge Charger R/T");</code></pre>
+              <pre><code class="typescript wont-compile">var notABoolean: boolean = 123; // wrong type</code></pre>
+              <pre><code class="typescript wont-compile">var myBoolean: boolean = true;
+myBoolean = "false"; // wrong type in reassignment</code></pre>
+              <pre><code class="typescript wont-compile">var myNumbers: Array&lt;number&gt; = [1, "2", 3]; // wrong type</code></pre>
+          </section>
+
+          <section class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
+              <h2>Classes</h2>
+              <pre><code class="typescript">class Person {
+    lastName: string;
+    firstName: string;
+    constructor(firstName: string, lastName string) {
+        this.firstName = firstName; // don't forget 'this.'
+        this.lastName = lastName;
+    };
+    getFullName(): string { // no function keyword or assignment
+        // the 'this.' is not optional
+        return this.lastName + ", " + this.firstName;
+    };
+}
+console.log(new Person("John", "Doe").getFullName()); // Doe, John
+              </code></pre>
+              <pre><code class="typescript">class User extends Person {
+    email: string;
+    login: string;
+    constructor(firstName: string, lastName: string,
+              email: string, login: string) {
+        // have to call constructor on extended class!
+        super(firstName, lastName);
+        this.email = email;
+        this.login = login;
+    };
+    toString(): string {
+        return this.getFullName() + // call method of extended class
+           " alias " + this.login + "(" + this.email + ")";
+    };
+}</code></pre>
+          </section>
+
+          <section class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
+              <h2>Interfaces</h2>
+          </section>
+
+          <section class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
+              <h2>Enums</h2>
+          </section>
+
+          <section class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
+              <h2>Functions</h2>
+          </section>
+
+
+      </article>
       <footer>
         <p>This project is maintained by <a href="https://github.com/maklemenz">maklemenz</a></p>
         <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
