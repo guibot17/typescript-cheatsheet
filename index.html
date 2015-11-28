@@ -39,8 +39,8 @@ public lastname) {
 }</code></pre>
 
 -->
-
-          <section class="col-xs-12 col-sm-12 col-md-6 col-lg-4" id="variables">
+          <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
+          <section id="variables">
               <div class="content">
                 <h2>Variables</h2>
                   <pre><code class="typescript">var typeInferred = 1; // will be number</code></pre>
@@ -55,6 +55,58 @@ public lastname) {
                   <pre><code class="typescript wont-compile">var myBoolean: boolean = true;
 myBoolean = "false"; // wrong type in reassignment</code></pre>
                 <pre><code class="typescript wont-compile">var myNumbers: Array&lt;number&gt; = [1, "2", 3]; // wrong type</code></pre>
+              </div>
+          </section>
+
+          <section class="TODO" id="generics">
+              <div class="content">
+                  <h2>Generics</h2>
+              </div>
+          </section>
+        </div>
+
+          <section class="col-xs-12 col-sm-12 col-md-6 col-lg-4" id="functions">
+              <div class="content">
+                  <h2>Functions</h2>
+                  <pre><code class="typescript">function multiply(a: number, b: number): number {
+    return a* b;
+}</code></pre>
+                  <pre><code class="typescript">var four = multiply(2, 2);</code></pre>
+                  <pre><code class="typescript wont-compile">multiply(2, "2"); // string not compatible</code></pre>
+                  <pre><code class="typescript wont-compile">multiply(2); // not enough parameters</code></pre>
+                  <pre><code class="typescript wont-compile">multiply(2, 3, 4); // too many parameters</code></pre>
+                  <pre><code class="typescript">// there is also a typed function type
+// takes to numbers and returns a number:
+var calculation: (a:number, b:number) => number = multiply</code></pre>
+                  <pre><code class="typescript wont-compile">var checkPermission: (user: User, role: Role) =>
+boolean = multiply; // won't compile</code></pre>
+                  <pre><code class="typescript">// parameters can be optional
+function greet(lastName: string, firstName?: string) { // note the '?'
+    var greet: string = "hello ";
+    if (firstName) greet += firstName + " ";
+    return greet + lastName
+}</code></pre>
+                  <pre><code class="typescript">greet("Doe"); // ok</code></pre>
+                  <pre><code class="typescript">greet("Doe", "Jane"); // ok</code></pre>
+                  <pre><code class="typescript">// optional parameters can have defaults
+function greet(name: string, greetPhrase: string = "hello") {
+    // [...]
+}
+console.log(greet("Jane")); // hello Jane
+console.log(greet("Jane", "hi")); // hi Jane
+                  </code></pre>
+                  <pre><code class="typescript">// Rest parameters
+function join(delimiter: string, ... strings: string[]) {
+    return strings.join(delimiter);
+}
+join(", ", "a", "b", "c", "d", "e"); // a, b, c, d, e
+                  </code></pre>
+                  <pre><code class="typescript">// Lambdas
+["a", "b", "c"].map((letter, index) => console.log(letter));</code></pre>
+                  <pre><code class="typescript">// can omit index and also the brackets on single parameter
+["a", "b", "c"].map(letter => console.log(letter));</code></pre>
+                  <pre><code class="typescript TODO">Lambdas (this-case)</code></pre>
+                  <pre><code class="typescript TODO">Overloads</code></pre>
               </div>
           </section>
 
@@ -100,8 +152,14 @@ console.log(new Person("John", "Doe").getFullName()); // Doe, John
 }
 console.log(new CodeLock(1, "x", "top secret").id); // ok
 console.log(new CodeLock(1, "x", "top secret").manufacturer); // ok
-console.log(new CodeLock(1, "x", "top secret").code); // won't compile
+console.log(new CodeLock(1, "x", "top secret").code); // forbidden!
 </code></pre>
+<pre><code class="typescript">// default values
+constructor(login?: string = "anon") {
+    this.login = login
+};
+console.log(new User("admin").login); // prints "admin"
+console.log(new User().login); // prints "anon"</code></pre>
                   <pre><code class="typescript TODO">accessors (setter/getter)</code></pre>
                   <pre><code class="typescript TODO">static property</code></pre>
               </div>
@@ -130,21 +188,10 @@ console.log(Size.M === "M"); // true
 console.log(Size.XL === 2); // true (position)
 console.log(Size.M === 1); // false
 console.log(Size.XL === Size.S); // false</code></pre>
-
               </div>
           </section>
 
-          <section class="col-xs-12 col-sm-12 col-md-6 col-lg-4 TODO" id="functions">
-              <div class="content">
-                  <h2>Functions</h2>
-              </div>
-          </section>
 
-          <section class="col-xs-12 col-sm-12 col-md-6 col-lg-4 TODO" id="generics">
-              <div class="content">
-                  <h2>Generics</h2>
-              </div>
-          </section>
 
           <section class="col-xs-12 col-sm-12 col-md-6 col-lg-4 TODO" id="modules">
               <div class="content">
