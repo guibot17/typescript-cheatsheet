@@ -87,7 +87,7 @@ console.log(new Person("John", "Doe").getFullName()); // Doe, John
     };
     toString(): string {
         return this.getFullName() + // call method of extended class
-           " alias " + this.login + "(" + this.email + ")";
+           " alias " + this.login + " (" + this.email + ")";
     };
 }</code></pre>
                 <pre><code class="typescript wont-compile" id="public-private">class CodeLock {
@@ -113,9 +113,24 @@ console.log(new CodeLock(1, "x", "top secret").code); // won't compile
               </div>
           </section>
 
-          <section class="col-xs-12 col-sm-12 col-md-6 col-lg-4 TODO" id="enums">
+          <section class="col-xs-12 col-sm-12 col-md-6 col-lg-4" id="enums">
               <div class="content">
                   <h2>Enums</h2>
+                  <pre><code class="typescript">enum Size {S, M, L, XL, XXL};</code></pre>
+                  <pre><code class="typescript">var mySize: Size = Size.XL;</code></pre>
+                  <pre><code class="typescript wont-compile">var mySize: Size = "XL"; // string not compatible</code></pre>
+                  <pre><code class="typescript wont-compile">var mySize: Size = Color.red; // Color not compatible</code></pre>
+                  <pre><code class="typescript">console.log(Size.XL) // prints "3" (the position)</code></pre>
+                  <pre><code class="typescript">// enums can also have usefull values
+enum Color {red: "#f00", black:"#000"};</code></pre>
+                  <pre><code class="typescript">// lookup enum titles by value
+var colorName: string = Color["#f00"];</code></pre>
+<pre><code class="typescript">enum Size {S = "S", M = "M", XL};
+console.log(Size.M === "M"); // true
+console.log(Size.XL === 2); // true (position)
+console.log(Size.M === 1); // false
+console.log(Size.XL === Size.S); // false</code></pre>
+
               </div>
           </section>
 
@@ -134,6 +149,18 @@ console.log(new CodeLock(1, "x", "top secret").code); // won't compile
           <section class="col-xs-12 col-sm-12 col-md-6 col-lg-4 TODO" id="modules">
               <div class="content">
                   <h2>Modules</h2>
+              </div>
+          </section>
+
+          <section class="col-xs-12 col-sm-12 col-md-6 col-lg-4 TODO" id="mixins">
+              <div class="content">
+                  <h2>Mixins / Traits</h2>
+              </div>
+          </section>
+
+          <section class="col-xs-12 col-sm-12 col-md-6 col-lg-4 TODO" id="interoperability">
+              <div class="content">
+                  <h2>Interoperability</h2>
               </div>
           </section>
 
