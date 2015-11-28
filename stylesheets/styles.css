@@ -1,8 +1,15 @@
-pre code .hljs-comment {
+h1.wip {
+  font-size: 50px;
+}
+
+pre code .hljs-comment, pre code#public-private .hljs-comment {
   color: #66ff33;
 }
 pre code.wont-compile .hljs-comment {
   color: red;
+}
+pre code#public-private .hljs-comment {
+  color: #66ff33;
 }
 
 code {
@@ -11,6 +18,15 @@ code {
 code.wont-compile {
   border-color: red;
 }
+
+
+.TODO {
+  /** shamefull! **/
+  background: orangered !important;
+  color: #000 !important;
+}
+
+
 
 
 @font-face {
@@ -235,6 +251,12 @@ header ul a strong {
 
 section {
   padding-bottom: 50px;
+  padding: 3px;
+  margin-bottom: 10px;
+}
+
+section > .content {
+  border-radius: 5px;
   padding: 10px;
   background: linear-gradient(to bottom, #eee 0%,#f6f6f6 100%);
 }

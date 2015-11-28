@@ -23,11 +23,11 @@
     <div class="wrapper">
       <header>
         <h1>Typescript-cheatsheet</h1>
-        <p>typescript cheatsheet syntax overview cheat sheet</p>
         <p class="view"><a href="https://github.com/maklemenz/typescript-cheatsheet">View the Project on GitHub <small>maklemenz/typescript-cheatsheet</small></a></p>
       </header>
+      <a href="https://github.com/maklemenz/typescript-cheatsheet"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
       <article class="container-fluid">
-        <h3> work in progress. come back soon </h3>
+        <h1 class="wip"> work in progress. come back soon </h1>
 <!--
         <pre><code class="typescript">class Person {
     fullname : string;
@@ -40,25 +40,28 @@ public lastname) {
 
 -->
 
-          <section class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
-              <h2>Variables</h2>
-              <pre><code class="typescript">var typeInferred = 1; // will be number</code></pre>
-              <pre><code class="typescript">var whatever: any = "can be set to anything";</code></pre>
-              <pre><code class="typescript">var myNumber: number = 1;</code></pre>
-              <pre><code class="typescript">var myString: string = "hello";</code></pre>
-              <pre><code class="typescript">var myBoolean: boolean = true;</code></pre>
-              <pre><code class="typescript">var myNumbers: number[] = [1, 2, 3];</code></pre>
-              <pre><code class="typescript">var myNumbers: Array&lt;number&gt; = [1, 2, 3];</code></pre>
-              <pre><code class="typescript">var myCar: Car = new Car("1970 Dodge Charger R/T");</code></pre>
-              <pre><code class="typescript wont-compile">var notABoolean: boolean = 123; // wrong type</code></pre>
-              <pre><code class="typescript wont-compile">var myBoolean: boolean = true;
+          <section class="col-xs-12 col-sm-12 col-md-6 col-lg-4" id="variables">
+              <div class="content">
+                <h2>Variables</h2>
+                  <pre><code class="typescript">var typeInferred = 1; // will be number</code></pre>
+                  <pre><code class="typescript">var whatever: any = "can be set to anything";</code></pre>
+                  <pre><code class="typescript">var myNumber: number = 1;</code></pre>
+                  <pre><code class="typescript">var myString: string = "hello";</code></pre>
+                  <pre><code class="typescript">var myBoolean: boolean = true;</code></pre>
+                  <pre><code class="typescript">var myNumbers: number[] = [1, 2, 3];</code></pre>
+                  <pre><code class="typescript">var myNumbers: Array&lt;number&gt; = [1, 2, 3];</code></pre>
+                  <pre><code class="typescript">var myCar: Car = new Car("1970 Dodge Charger R/T");</code></pre>
+                  <pre><code class="typescript wont-compile">var notABoolean: boolean = 123; // wrong type</code></pre>
+                  <pre><code class="typescript wont-compile">var myBoolean: boolean = true;
 myBoolean = "false"; // wrong type in reassignment</code></pre>
-              <pre><code class="typescript wont-compile">var myNumbers: Array&lt;number&gt; = [1, "2", 3]; // wrong type</code></pre>
+                <pre><code class="typescript wont-compile">var myNumbers: Array&lt;number&gt; = [1, "2", 3]; // wrong type</code></pre>
+              </div>
           </section>
 
-          <section class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
-              <h2>Classes</h2>
-              <pre><code class="typescript">class Person {
+          <section class="col-xs-12 col-sm-12 col-md-6 col-lg-4" id="classes">
+              <div class="content">
+                  <h2>Classes</h2>
+                  <pre><code class="typescript">class Person {
     lastName: string;
     firstName: string;
     constructor(firstName: string, lastName string) {
@@ -72,7 +75,7 @@ myBoolean = "false"; // wrong type in reassignment</code></pre>
 }
 console.log(new Person("John", "Doe").getFullName()); // Doe, John
               </code></pre>
-              <pre><code class="typescript">class User extends Person {
+                <pre><code class="typescript">class User extends Person {
     email: string;
     login: string;
     constructor(firstName: string, lastName: string,
@@ -87,20 +90,52 @@ console.log(new Person("John", "Doe").getFullName()); // Doe, John
            " alias " + this.login + "(" + this.email + ")";
     };
 }</code></pre>
+                <pre><code class="typescript wont-compile" id="public-private">class CodeLock {
+    id: number; // implicitly public
+    public manufacturer: string;
+    private code: string;
+    constructor(id: number, manufacturer: string, code: string) {
+        // [...]
+    }
+}
+console.log(new CodeLock(1, "x", "top secret").id); // ok
+console.log(new CodeLock(1, "x", "top secret").manufacturer); // ok
+console.log(new CodeLock(1, "x", "top secret").code); // won't compile
+</code></pre>
+                  <pre><code class="typescript TODO">accessors (setter/getter)</code></pre>
+                  <pre><code class="typescript TODO">static property</code></pre>
+              </div>
           </section>
 
-          <section class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
-              <h2>Interfaces</h2>
+          <section class="col-xs-12 col-sm-12 col-md-6 col-lg-4 TODO" id="interfaces">
+              <div class="content">
+                  <h2>Interfaces</h2>
+              </div>
           </section>
 
-          <section class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
-              <h2>Enums</h2>
+          <section class="col-xs-12 col-sm-12 col-md-6 col-lg-4 TODO" id="enums">
+              <div class="content">
+                  <h2>Enums</h2>
+              </div>
           </section>
 
-          <section class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
-              <h2>Functions</h2>
+          <section class="col-xs-12 col-sm-12 col-md-6 col-lg-4 TODO" id="functions">
+              <div class="content">
+                  <h2>Functions</h2>
+              </div>
           </section>
 
+          <section class="col-xs-12 col-sm-12 col-md-6 col-lg-4 TODO" id="generics">
+              <div class="content">
+                  <h2>Generics</h2>
+              </div>
+          </section>
+
+          <section class="col-xs-12 col-sm-12 col-md-6 col-lg-4 TODO" id="modules">
+              <div class="content">
+                  <h2>Modules</h2>
+              </div>
+          </section>
 
       </article>
       <footer>
@@ -108,9 +143,9 @@ console.log(new Person("John", "Doe").getFullName()); // Doe, John
         <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
       </footer>
     </div>
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/highlight.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/languages/typescript.min.js"></script>
-    <script>hljs.initHighlightingOnLoad();</script>
     <script src="javascripts/scale.fix.js"></script>
 <!-- google analytics -->
 <script>
@@ -122,6 +157,21 @@ console.log(new Person("John", "Doe").getFullName()); // Doe, John
   ga('create', 'UA-70472153-1', 'auto');
   ga('send', 'pageview');
 
+</script>
+
+<script>
+    function setGreen(element) {
+        $(element).css("color", "#66ff33");
+    }
+    function setRed(element) {
+        $(element).css("color", "red");
+    }
+    $(document).ready(function() {
+        $('pre code').each(function(i, block) {
+            hljs.highlightBlock(block);
+        });
+        setRed($("#public-private .hljs-comment").get(4));
+    });
 </script>
   </body>
 </html>
