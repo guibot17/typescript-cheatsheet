@@ -28,6 +28,7 @@
       <a href="https://github.com/maklemenz/typescript-cheatsheet"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
       <article class="container-fluid">
         <h1 class="wip"> work in progress. come back soon </h1>
+        <div class="row">
 <!--
         <pre><code class="typescript">class Person {
     fullname : string;
@@ -59,9 +60,47 @@ mybool = "false"; // wrong type in reassignment</code></pre>
               </div>
           </section>
 
-          <section class="TODO" id="generics">
+
+          <section id="interfaces">
               <div class="content">
-                  <h2>Generics</h2>
+                  <h2>Interfaces</h2>
+              <pre><code class="typescript">checkPermission(role: Role, hasRole: {role: Role}): bool {
+    // this method takes every object
+    // with a property role of type Role
+    return true;
+}</code></pre>
+<pre><code class="typescript">interface HasPermissions {
+    roles: Role[];
+    hasRole(role: Role): bool;
+}
+checkPermission(role: Role, user: HasPermissions): bool {
+    return user && user.hasRole(role);
+}</code></pre>
+              <pre><code class="typescript">interface Person {
+    title?: string; // optional
+    name: string;
+    firstName?: string; // optional
+}</code></pre>
+              </div>
+          </section>
+
+          <section id="enums">
+              <div class="content">
+                  <h2>Enums</h2>
+                  <pre><code class="typescript">enum Size {S, M, L, XL, XXL};</code></pre>
+                  <pre><code class="typescript">var mySize: Size = Size.XL;</code></pre>
+                  <pre><code class="typescript wont-compile">var mySize: Size = "XL"; // string not compatible</code></pre>
+                  <pre><code class="typescript wont-compile">var mySize: Size = Color.red; // Color not compatible</code></pre>
+                  <pre><code class="typescript">console.log(Size.XL) // prints "3" (the position)</code></pre>
+                  <pre><code class="typescript">// enums can also have usefull values
+enum Color {red: "#f00", black:"#000"};</code></pre>
+                  <pre><code class="typescript">// lookup enum titles by value
+var colorName: string = Color["#f00"];</code></pre>
+                  <pre><code class="typescript">enum Size {S = "S", M = "M", XL};
+Size.M === "M"; // true
+Size.XL === 2; // true (position)
+Size.M === 1; // false (value override to "M")
+Size.XL === Size.S; // false</code></pre>
               </div>
           </section>
         </div>
@@ -193,70 +232,33 @@ console.log(Math.pi); // no instance
 </code></pre>
               </div>
           </section>
+</div>
+          <div class="row TODO">
+              <h2>TODO</h2>
+              <section class="col-xs-12 col-sm-12 col-md-6 col-lg-4 TODO" id="modules">
+                  <div class="content">
+                      <h2>Modules</h2>
+                  </div>
+              </section>
 
-          <section class="col-xs-12 col-sm-12 col-md-6 col-lg-4 TODO" id="interfaces">
-              <div class="content">
-                  <h2>Interfaces</h2>
-                  <pre><code class="typescript">checkPermission(role: Role, hasRole: {role: Role}): bool {
-    // this method takes every object
-    // with a property role of type Role
-    return true;
-}</code></pre>
-                  <pre><code class="typescript">interface HasPermissions {
-    roles: Role[];
-    hasRole(role: Role): bool;
-}
-checkPermission(role: Role, user: HasPermissions): bool {
-    return user && user.hasRole(role);
-}</code></pre>
-                  <pre><code class="typescript">interface Person {
-    title?: string; // optional
-    name: string;
-    firstName?: string; // optional
-}</code></pre>
-              </div>
-          </section>
+              <section class="col-xs-12 col-sm-12 col-md-6 col-lg-4 TODO" id="mixins">
+                  <div class="content">
+                      <h2>Mixins / Traits</h2>
+                  </div>
+              </section>
 
-          <section class="col-xs-12 col-sm-12 col-md-6 col-lg-4" id="enums">
-              <div class="content">
-                  <h2>Enums</h2>
-                  <pre><code class="typescript">enum Size {S, M, L, XL, XXL};</code></pre>
-                  <pre><code class="typescript">var mySize: Size = Size.XL;</code></pre>
-                  <pre><code class="typescript wont-compile">var mySize: Size = "XL"; // string not compatible</code></pre>
-                  <pre><code class="typescript wont-compile">var mySize: Size = Color.red; // Color not compatible</code></pre>
-                  <pre><code class="typescript">console.log(Size.XL) // prints "3" (the position)</code></pre>
-                  <pre><code class="typescript">// enums can also have usefull values
-enum Color {red: "#f00", black:"#000"};</code></pre>
-                  <pre><code class="typescript">// lookup enum titles by value
-var colorName: string = Color["#f00"];</code></pre>
-<pre><code class="typescript">enum Size {S = "S", M = "M", XL};
-Size.M === "M"; // true
-Size.XL === 2; // true (position)
-Size.M === 1; // false (value override to "M")
-Size.XL === Size.S; // false</code></pre>
-              </div>
-          </section>
+              <section class="col-xs-12 col-sm-12 col-md-6 col-lg-4 TODO" id="interoperability">
+                  <div class="content">
+                      <h2>Interoperability</h2>
+                  </div>
+              </section>
 
-
-
-          <section class="col-xs-12 col-sm-12 col-md-6 col-lg-4 TODO" id="modules">
-              <div class="content">
-                  <h2>Modules</h2>
-              </div>
-          </section>
-
-          <section class="col-xs-12 col-sm-12 col-md-6 col-lg-4 TODO" id="mixins">
-              <div class="content">
-                  <h2>Mixins / Traits</h2>
-              </div>
-          </section>
-
-          <section class="col-xs-12 col-sm-12 col-md-6 col-lg-4 TODO" id="interoperability">
-              <div class="content">
-                  <h2>Interoperability</h2>
-              </div>
-          </section>
-
+              <section class="TODO" id="generics">
+                  <div class="content">
+                      <h2>Generics</h2>
+                  </div>
+              </section>
+          </div>
       </article>
       <footer>
         <p>This project is maintained by <a href="https://github.com/maklemenz">maklemenz</a></p>
