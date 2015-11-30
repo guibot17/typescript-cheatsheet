@@ -47,13 +47,13 @@ public lastname) {
                   <pre><code class="typescript">var whatever: any = "can be set to anything";</code></pre>
                   <pre><code class="typescript">var myNumber: number = 1;</code></pre>
                   <pre><code class="typescript">var myString: string = "hello";</code></pre>
-                  <pre><code class="typescript">var myBoolean: boolean = true;</code></pre>
+                  <pre><code class="typescript">var mybool: bool = true;</code></pre>
                   <pre><code class="typescript">var myNumbers: number[] = [1, 2, 3];</code></pre>
                   <pre><code class="typescript">var myNumbers: Array&lt;number&gt; = [1, 2, 3];</code></pre>
                   <pre><code class="typescript">var myCar: Car = new Car("1970 Dodge Charger R/T");</code></pre>
-                  <pre><code class="typescript wont-compile">var notABoolean: boolean = 123; // wrong type</code></pre>
-                  <pre><code class="typescript wont-compile">var myBoolean: boolean = true;
-myBoolean = "false"; // wrong type in reassignment</code></pre>
+                  <pre><code class="typescript wont-compile">var notAbool: bool = 123; // wrong type</code></pre>
+                  <pre><code class="typescript wont-compile">var mybool: bool = true;
+mybool = "false"; // wrong type in reassignment</code></pre>
                 <pre><code class="typescript wont-compile">var myNumbers: Array&lt;number&gt; = [1, "2", 3]; // wrong type</code></pre>
                 <pre><code class="typescript">var arrayOfObjects: {a:number, b:number}[] = [{a:1, b:2}];</code></pre>
               </div>
@@ -80,7 +80,7 @@ myBoolean = "false"; // wrong type in reassignment</code></pre>
 // takes to numbers and returns a number:
 var calculation: (a:number, b:number) => number = multiply</code></pre>
                   <pre><code class="typescript wont-compile">var checkPermission: (user: User, role: Role) =>
-boolean = multiply; // won't compile</code></pre>
+bool = multiply; // won't compile</code></pre>
                   <pre><code class="typescript">// parameters can be optional
 function greet(lastName: string, firstName?: string) { // note the '?'
     var greet: string = "hello ";
@@ -197,6 +197,23 @@ console.log(Math.pi); // no instance
           <section class="col-xs-12 col-sm-12 col-md-6 col-lg-4 TODO" id="interfaces">
               <div class="content">
                   <h2>Interfaces</h2>
+                  <pre><code class="typescript">checkPermission(role: Role, hasRole: {role: Role}): bool {
+    // this method takes every object
+    // with a property role of type Role
+    return true;
+}</code></pre>
+                  <pre><code class="typescript">interface HasPermissions {
+    roles: Role[];
+    hasRole(role: Role): bool;
+}
+checkPermission(role: Role, user: HasPermissions): bool {
+    return user && user.hasRole(role);
+}</code></pre>
+                  <pre><code class="typescript">interface Person {
+    title?: string; // optional
+    name: string;
+    firstName?: string; // optional
+}</code></pre>
               </div>
           </section>
 
@@ -213,10 +230,10 @@ enum Color {red: "#f00", black:"#000"};</code></pre>
                   <pre><code class="typescript">// lookup enum titles by value
 var colorName: string = Color["#f00"];</code></pre>
 <pre><code class="typescript">enum Size {S = "S", M = "M", XL};
-console.log(Size.M === "M"); // true
-console.log(Size.XL === 2); // true (position)
-console.log(Size.M === 1); // false
-console.log(Size.XL === Size.S); // false</code></pre>
+Size.M === "M"; // true
+Size.XL === 2; // true (position)
+Size.M === 1; // false (value override to "M")
+Size.XL === Size.S; // false</code></pre>
               </div>
           </section>
 
