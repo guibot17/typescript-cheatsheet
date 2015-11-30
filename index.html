@@ -55,6 +55,7 @@ public lastname) {
                   <pre><code class="typescript wont-compile">var myBoolean: boolean = true;
 myBoolean = "false"; // wrong type in reassignment</code></pre>
                 <pre><code class="typescript wont-compile">var myNumbers: Array&lt;number&gt; = [1, "2", 3]; // wrong type</code></pre>
+                <pre><code class="typescript">var arrayOfObjects: {a:number, b:number}[] = [{a:1, b:2}];</code></pre>
               </div>
           </section>
 
@@ -106,7 +107,15 @@ join(", ", "a", "b", "c", "d", "e"); // a, b, c, d, e
                   <pre><code class="typescript">// can omit index and also the brackets on single parameter
 ["a", "b", "c"].map(letter => console.log(letter));</code></pre>
                   <pre><code class="typescript TODO">Lambdas (this-case)</code></pre>
-                  <pre><code class="typescript TODO">Overloads</code></pre>
+                  <pre><code class="typescript">// Overloads
+function getLogin(userId: number): string; // declaration with number
+function getLogin(user: User): string; // declaration with object
+function getLogin(x): string { // implementing both
+    if (typeof x == "number") {
+        x = getUserById(x);
+    }
+    return x.login;
+}</code></pre>
               </div>
           </section>
 
@@ -176,7 +185,12 @@ console.log(new CodeLock(123, "secret").id) // id is public</code></pre>
     }
 }
 new User("Jane Doe", "Users").role = PermissionRole.ADMIN; // boom</code></pre>
-                  <pre><code class="typescript TODO">static property</code></pre>
+                  <pre><code class="typescript">// static property
+class Math {
+    static pi = 3.14159265359;
+}
+console.log(Math.pi); // no instance
+</code></pre>
               </div>
           </section>
 
