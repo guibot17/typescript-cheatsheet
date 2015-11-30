@@ -160,7 +160,22 @@ constructor(login?: string = "anon") {
 };
 console.log(new User("admin").login); // prints "admin"
 console.log(new User().login); // prints "anon"</code></pre>
-                  <pre><code class="typescript TODO">accessors (setter/getter)</code></pre>
+                  <pre><code class="typescript">// constructor shorthand for properties
+// note there is no property declaration here
+constructor(public id: number, private code: string) {
+    // and no property setting there
+}
+console.log(new CodeLock(123, "secret").id) // id is public</code></pre>
+                  <pre><code class="typescript">class User {
+    // properties, constructor, etc
+    set role(role: PermissionRole) {
+        if (role === Role.ADMIN && this.group != "admin") {
+            throw new Error("Illegal setting of admin role");
+        }
+        this.role = role;
+    }
+}
+new User("Jane Doe", "Users").role = PermissionRole.ADMIN; // boom</code></pre>
                   <pre><code class="typescript TODO">static property</code></pre>
               </div>
           </section>
