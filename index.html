@@ -198,9 +198,9 @@ console.log(new Person("John", "Doe").getFullName()); // Doe, John
         // [...]
     }
 }
-console.log(new CodeLock(1, "x", "top secret").id); // ok
-console.log(new CodeLock(1, "x", "top secret").manufacturer); // ok
-console.log(new CodeLock(1, "x", "top secret").code); // forbidden!
+new CodeLock(1, "x", "top secret").id; // ok
+new CodeLock(1, "x", "top secret").manufacturer; // ok
+new CodeLock(1, "x", "top secret").code; // compiler warning!
 </code></pre>
 <pre><code class="typescript">// default values
 constructor(login?: string = "anon") {
