@@ -96,10 +96,10 @@ checkPermission(role: Role, user: HasPermissions): bool {
 enum Color {red: "#f00", black:"#000"};</code></pre>
                   <pre><code class="typescript">// lookup enum titles by value
 var colorName: string = Color["#f00"];</code></pre>
-                  <pre><code class="typescript">enum Size {S = "S", M = "M", XL};
-Size.M === "M"; // true
+                  <pre><code class="typescript wont-compile">// in Typescript enums are numeric
+enum Size {S = "S", M = "M", XL}; // string not possible</code></pre>
+                  <pre><code class="typescript">enum Size {S, M, XL};
 Size.XL === 2; // true (position)
-Size.M === 1; // false (value override to "M")
 Size.XL === Size.S; // false</code></pre>
               </div>
           </section>
