@@ -186,7 +186,7 @@ console.log(new Person("John", "Doe").getFullName()); // Doe, John
         this.login = login;
     };
     toString(): string {
-        return this.getFullName() + // call method of extended class
+        return super.getFullName() + // call method of extended class
            " alias " + this.login + " (" + this.email + ")";
     };
 }</code></pre>
